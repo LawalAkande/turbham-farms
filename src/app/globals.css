@@ -17,17 +17,34 @@
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
+  /* color: rgb(var(--foreground-rgb));
   background: linear-gradient(
       to bottom,
       transparent,
       rgb(var(--background-end-rgb))
     )
-    rgb(var(--background-start-rgb));
+    rgb(var(--background-start-rgb)); */
 }
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
   }
+}
+
+@layer base {
+  @font-face {
+    font-family: "windsorpro-bold";
+    /* font-weight: 400; */
+    src: url("../../public/assets/fonts/windsor-pro-cdnfonts/WindsorProBold.TTF")
+      format("truetype");
+  }
+}
+
+.font-windsorpro-bold {
+  font-family: "windsorpro-bold";
+}
+
+.font-urbanist {
+  font-family: "Urbanist"
 }
