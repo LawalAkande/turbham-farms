@@ -8,6 +8,10 @@ const QualityAssurance = () => {
         className="flex self-start object-cover w-full h-auto rounded-xl md:max-w-[548px]"
         src="/assets/images/partner-with-us/quality-assurance2.png"
         alt="quality assurnce"
+        width={0}
+        height={0}
+        sizes="100vw"
+        style={{ width: "100%", height: "auto" }}
       />
       <div className="flex flex-col gap-[42px] ">
         <div className="flex flex-col gap-[16px] max-lg:flex-row max-lg:items-center">

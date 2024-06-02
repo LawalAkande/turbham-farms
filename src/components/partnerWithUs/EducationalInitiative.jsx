@@ -31,6 +31,10 @@ const EducationalInitiative = () => {
       <Image
         src="/assets/images/partner-with-us/educational_initiative.png"
         alt="educational initiative"
+        width={0}
+        height={0}
+        sizes="100vw"
+        style={{ width: "100%", height: "auto" }}
       />
     </section>
   );

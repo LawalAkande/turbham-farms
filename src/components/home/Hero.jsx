@@ -24,7 +24,7 @@ const Hero = () => {
               className="w-fit rounded-md border px-2 py-1 bg-GreenHaza text-white border-GreenHaza font-medium hover:text-GreenHaza hover:bg-white"
             />
           </div> */}
-          <p className="absolute left-20 top-32 text-xs text-BalticSea md:text-xl font-light">
+          <p className="absolute left-20 top-28 text-xs text-BalticSea md:text-xl font-light">
             As a proud subsidiary of Turbham Technology, we bring innovation to
             agriculture, transforming spaces into vibrant green havens. Join us
             on a journey of sustainable growth and community empowerment.

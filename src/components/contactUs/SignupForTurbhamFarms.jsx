@@ -45,14 +45,14 @@ const SignupForTurbhamFarms = () => {
         <div className="w-full flex items-baseline gap-4 absolute left-0 top-[-15%] space-y-2 ">
           <div className="w-[40%]">
             <Button
-              href="/"
+              href="/become-a-partner"
               title="Partner with us"
               className="text-xs w-full rounded-md border-2 p-1 md:p-3.5 border-DeepGreen font-medium"
             />
           </div>
           <div className="w-[40%]">
             <Button
-              href="/"
+              href="/become-a-partner"
               title="Become a Farmer"
               className="text-xs w-full rounded-md text-white border-2 border-GreenHaza p-1 bg-GreenHaza font-medium"
             />
@@ -72,7 +72,7 @@ const SignupForTurbhamFarms = () => {
             </div>
             <div className="md:w-[40%]">
               <Button
-                href="/"
+                href="/become-a-partner"
                 title="Become a Farmer"
                 className="text-xs md:text-2xl w-fit md:w-full rounded-md md:rounded-xl text-white border-2 border-GreenHaza p-1 md:p-3.5 bg-GreenHaza font-medium"
               />

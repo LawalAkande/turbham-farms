@@ -586,7 +586,10 @@ const PartnerWithUsForm = () => {
           <Image
             src="/assets/images/partner-with-us/partner-with-us.png"
             alt="Hero Image"
-            className=" w-[100%] h-[100%] max-xl:h-[1800px]"
+            width={0}
+            height={0}
+            sizes="100vw"
+            style={{ width: "100%", height: "auto" }}
           />
           <div className="flex flex-row items-center justify-between mb-5 md:mb-10 absolute top-[13%] right-[5%] translate-x-[-50%] translate-y-[-50%] max-xl:left-[70%] max-xl:top-[15%] max-lg:translate-x-[-20%] z-[999]">
             <h3 className="font-semibold text-lg md:text-2xl xl:text-4xl text-white">
