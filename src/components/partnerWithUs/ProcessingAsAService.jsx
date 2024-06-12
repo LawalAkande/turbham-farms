@@ -11,7 +11,7 @@ const ProcessingAsAService = () => {
         </h2>
 
         <p className="max-w-[343px] text-sm text-DavyGrey md:max-w-2xl w-full md:text-xl font-light">
-          We ensure that farmers produce gains exposure and recognition. This
+          We ensure that farmers' produce gains exposure and recognition. This
           approach not only enhances the value of agricultural products but also
           contributes to the overall growth and sustainability of farming
           communities

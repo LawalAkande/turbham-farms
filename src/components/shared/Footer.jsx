@@ -56,10 +56,10 @@ const Footer = () => {
                 <Link href="/" className="text-sm">
                   Home
                 </Link>
-                <Link href="" className="text-sm">
+                <Link href="about-us" className="text-sm">
                   About us
                 </Link>
-                <Link href="" className="text-sm">
+                <Link href="our-services" className="text-sm">
                   Our Service
                 </Link>
                 <Link href="/contact-us" className="text-sm">

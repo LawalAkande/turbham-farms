@@ -10,7 +10,8 @@ const praasData = {
     title: "Processing as a Service (PRAAS)",
     description:
       "We ensure that farmers' produce gains exposure and recognition. This approach not only enhances the value of agricultural products but also contributes to the overall growth and sustainability of farming communities",
-    image: HeroImg,
+      media: HeroImg,
+      mediaType: "image",
     altText: "Agricultural field",
   },
   planningStage: {

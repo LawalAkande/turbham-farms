@@ -12,7 +12,8 @@ export default function PRAAS() {
       <PlantingAsAService
         title={hero.title}
         description={hero.description}
-        image={hero.image}
+        media={hero.media}
+        mediaType={hero.mediaType}
         altText={hero.altText}
       />
 

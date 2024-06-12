@@ -1,4 +1,5 @@
 import HeroImg from "../../public/assets/images/our-services/oaas/oaas-image-1.png";
+import HeroVid from "../../public/assets/videos/oaas/oaas.mp4";
 import PlanningImg1 from "../../public/assets/images/our-services/oaas/planning-stage-1.png";
 import ImplementImg1 from "../../public/assets/images/our-services/oaas/implementation-image-1.png";
 import ImplementImg2 from "../../public/assets/images/our-services/oaas/implementation-image-2.png";
@@ -10,7 +11,8 @@ const oaasData = {
     title: "Off-taking as a Service (OOAS)",
     description:
       "This streamlined approach ensures that farmers have a direct route to market access, promoting efficiency and enhancing their economic opportunities.",
-    image: HeroImg,
+    media: HeroVid, 
+    mediaType: "video",
     altText: "Agricultural field",
   },
   planningStage: {

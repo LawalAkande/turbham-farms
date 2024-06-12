@@ -10,7 +10,8 @@ const waasData = {
     title: "Warehousing as a Service (WAAS)",
     description:
       "As part of Warehousing as a Service (WAAS), Turbham Farms actively supports farmers by offering machinery for planting activities at prices below traditional market rates. This initiative aims to make modern farming equipment accessible, encouraging farmers to adopt advanced planting practices for increased efficiency.",
-    image: HeroImg,
+      media: HeroImg,
+      mediaType: "image",
     altText: "Agricultural field",
   },
   planningStage: {

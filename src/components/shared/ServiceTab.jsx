@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
+import MobileDropdown from "./MobileDropdown";
 
 const ServiceTab = ({ setActiveTab, activeTab }) => {
   const router = useRouter();
@@ -137,7 +138,7 @@ const ServiceTab = ({ setActiveTab, activeTab }) => {
     </div>
   );
 
-  const renderServiceDropdown = (activeTab) => (
+  const renderServiceDropdown = () => (
     <div className="flex items-center justify-center w-full">
       <div className="relative py-[70px] w-[342px]  self-center drop-shadow-[0_2px_0_2px_rgba(0, 0, 0, 0.25)] drop-shadow-md">
         <button
@@ -240,7 +241,7 @@ const ServiceTab = ({ setActiveTab, activeTab }) => {
     <>
       {isClient && windowWidth > 930
         ? renderServiceTabs()
-        : renderServiceDropdown()}
+        : <MobileDropdown />}
     </>
   );
 };

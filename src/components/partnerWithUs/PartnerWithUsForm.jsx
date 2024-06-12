@@ -1,15 +1,15 @@
 "use client";
 import React, { useState, useEffect } from "react";
-// import Button from "../../components/shared/Button";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
-import Image from "next/image";
 
 const PartnerWithUsForm = () => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [mySelected, setMySelected] = useState("FARMER COLLABORATION");
   const [isSmallScreen, setIsSmallScreen] = useState(false);
+  const [loading, setLoading] = useState(false);
+
   let initialFormData = {
     name: "",
     number: "",
@@ -61,8 +61,35 @@ const PartnerWithUsForm = () => {
         : "CORPORATE PARTNER";
     const data = {
       partner_type: partnerType,
-      ...formData,
+      name: formData.name,
+      number: formData.number,
+      email: formData.email,
+      address: formData.address,
+      occupation:
+        partnerType === "INDIVIDUAL PARTNER" ? formData.occupation : undefined,
+      investment_range: formData.investment_range,
+      investment_timeframe:
+        partnerType === "INDIVIDUAL PARTNER"
+          ? formData.investment_timeframe
+          : undefined,
+      mode_of_communication: formData.mode_of_communication
+        .split(",")
+        .map((item) => item.trim()),
+      contact_person:
+        partnerType === "CORPORATE PARTNER"
+          ? formData.contact_person
+          : undefined,
+      nature_of_interest:
+        partnerType === "CORPORATE PARTNER"
+          ? formData.nature_of_interest
+          : undefined,
+      corporate_goals:
+        partnerType === "CORPORATE PARTNER"
+          ? formData.corporate_goals
+          : undefined,
     };
+
+    setLoading(true);
 
     try {
       const response = await axios.post(
@@ -70,6 +97,7 @@ const PartnerWithUsForm = () => {
         data
       );
       if (response) {
+        setLoading(false);
         toast.success("Partnership form submitted successfully!");
         setFormData(initialFormData);
       }
@@ -340,7 +368,7 @@ const PartnerWithUsForm = () => {
                         className="text-white border border-GreenHaza bg-GreenHaza rounded-xl p-4 hover:border-GreenHaza hover:bg-GreenHaza  hover:text-white w-[160px]"
                         type="submit"
                       >
-                        Submit
+                        {loading ? "Submiting..." : "Submit"}
                       </button>
                     </div>
                     {/* <Button
@@ -572,7 +600,7 @@ const PartnerWithUsForm = () => {
                         className="text-white border border-GreenHaza bg-GreenHaza rounded-xl p-4 hover:border-GreenHaza hover:bg-GreenHaza  hover:text-white w-[160px]"
                         type="submit"
                       >
-                        Submit
+                        {loading ? "Submiting..." : "Submit"}
                       </button>
                     </div>
                   </div>
@@ -583,20 +611,33 @@ const PartnerWithUsForm = () => {
         </div>
       ) : (
         <div className=" relative h-[100%] pt-[200px] px-[81px]  ">
-          <Image
+          <img
             src="/assets/images/partner-with-us/partner-with-us.png"
             alt="Hero Image"
-            width={0}
-            height={0}
-            sizes="100vw"
-            style={{ width: "100%", height: "auto" }}
+            className={`w-[100%] ${
+              mySelected === "FARMER COLLABORATION"
+                ? "h-[1800px]"
+                : "h-[3000px]"
+            }`}
           />
-          <div className="flex flex-row items-center justify-between mb-5 md:mb-10 absolute top-[13%] right-[5%] translate-x-[-50%] translate-y-[-50%] max-xl:left-[70%] max-xl:top-[15%] max-lg:translate-x-[-20%] z-[999]">
+          <div
+            className={`flex flex-row items-center justify-between mb-5 md:mb-10 absolute  max-xl:left-[70%] max-xl:top-[15%] max-lg:translate-x-[-20%] z-[999] ${
+              mySelected === "FARMER COLLABORATION"
+                ? "top-[13%] right-[5%] translate-x-[-50%] translate-y-[-50%]"
+                : "top-[10%] right-[5%] translate-x-[-50%] translate-y-[-50%]"
+            }`}
+          >
             <h3 className="font-semibold text-lg md:text-2xl xl:text-4xl text-white">
               Partnership Inquiry Form
             </h3>
           </div>
-          <div className="flex flex-col gap-[32px] absolute top-[15%] left-[25%] translate-x-[-50%] translate-y-[-50%] z-[999] w-[513px] max-xl:w-[550px]">
+          <div
+            className={`flex flex-col gap-[32px] absolute  z-[999] w-[513px] max-xl:w-[550px] ${
+              mySelected === "FARMER COLLABORATION"
+                ? "top-[15%] left-[25%] translate-x-[-50%] translate-y-[-50%]"
+                : "top-[12%] left-[25%] translate-x-[-50%] translate-y-[-50%]"
+            }`}
+          >
             <h5 className="font-windsorpro-bold text-5xl leading-[3.81rem] text-GreenHaza">
               Lets Get Started!
             </h5>
@@ -849,7 +890,7 @@ const PartnerWithUsForm = () => {
                       className="text-white border border-GreenHaza bg-GreenHaza rounded-xl p-4 hover:border-GreenHaza hover:bg-GreenHaza  hover:text-white w-[160px]"
                       type="submit"
                     >
-                      Submit
+                      {loading ? "Submiting..." : "Submit"}
                     </button>
                   </div>
                 </div>
@@ -861,12 +902,12 @@ const PartnerWithUsForm = () => {
             <form onSubmit={handleSubmit}>
               <div className="">
                 <h4 className="font-light text-xl md:text-2xl mb-5 md:mb-28 text-white absolute top-[32%] left-[18%] translate-x-[-50%] translate-y-[-50%] z-[999]">
-                  Contact Information
+                  Company/Organization
                 </h4>
                 <div className=" flex flex-col gap-[48px] absolute top-[60%] left-[50%] translate-x-[-50%] translate-y-[-40%] z-[999] w-[80%]">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 mb-16 ">
                     <div className="flex flex-col items-start gap-[16px] pb-1 md:pb-5 pl-0 md:pl-3">
-                      <h5 className="text-white">Full Name</h5>
+                      <h5 className="text-white">Company Name</h5>
                       <div className="px-3 md:px-0 flex items-center md:space-x-1 w-full rounded-[4px] border p-2">
                         <input
                           type="text"
@@ -879,7 +920,20 @@ const PartnerWithUsForm = () => {
                       </div>
                     </div>
                     <div className="flex flex-col items-start gap-[16px] pb-1 md:pb-5 pl-0 md:pl-3">
-                      <h5 className="text-white">Email Address</h5>
+                      <h5 className="text-white">Contact Person</h5>
+                      <div className="px-3 md:px-0 flex items-center md:space-x-1 w-full rounded-[4px] border p-2">
+                        <input
+                          type="text"
+                          name="contact_person"
+                          value={formData.contact_person}
+                          onChange={handleChange}
+                          className="w-full placeholder-[#00A85A] text-[#00A85A] bg-transparent text-lg font-light focus:outline-0 px-3"
+                          placeholder="Enter your name"
+                        />
+                      </div>
+                    </div>
+                    <div className="flex flex-col items-start gap-[16px] pb-1 md:pb-5 pl-0 md:pl-3">
+                      <h5 className="text-white">Contact Email</h5>
                       <div className="px-3 md:px-0 flex items-center md:space-x-1 w-full rounded-[4px] border p-2">
                         <input
                           type="text"
@@ -887,12 +941,12 @@ const PartnerWithUsForm = () => {
                           value={formData.email}
                           onChange={handleChange}
                           className="w-full placeholder-[#00A85A] text-[#00A85A] bg-transparent text-lg font-light focus:outline-0 px-3"
-                          placeholder="Enter your email"
+                          placeholder="Enter your Email"
                         />
                       </div>
                     </div>
                     <div className="flex flex-col items-start gap-[16px] pb-1 md:pb-5 pl-0 md:pl-3">
-                      <h5 className="text-white">Phone Number</h5>
+                      <h5 className="text-white">Contact Phone Number</h5>
                       <div className="px-3 md:px-0 flex items-center md:space-x-1 w-full rounded-[4px] border p-2">
                         <input
                           type="text"
@@ -900,12 +954,12 @@ const PartnerWithUsForm = () => {
                           value={formData.number}
                           onChange={handleChange}
                           className="w-full placeholder-[#00A85A] text-[#00A85A] bg-transparent text-lg font-light focus:outline-0 px-3"
-                          placeholder="Enter your phone number"
+                          placeholder="Enter your Number"
                         />
                       </div>
                     </div>
                     <div className="flex flex-col items-start gap-[16px] pb-1 md:pb-5 pl-0 md:pl-3">
-                      <h5 className="text-white">Residential Address</h5>
+                      <h5 className="text-white">Company Address</h5>
                       <div className="px-3 md:px-0 flex items-center md:space-x-1 w-full rounded-[4px] border p-2">
                         <input
                           type="text"
@@ -913,66 +967,27 @@ const PartnerWithUsForm = () => {
                           value={formData.address}
                           onChange={handleChange}
                           className="w-full placeholder-[#00A85A] text-[#00A85A] bg-transparent text-lg font-light focus:outline-0 px-3"
-                          placeholder="Enter your Residential address"
+                          placeholder="Enter Company Address"
                         />
                       </div>
                     </div>
-                    <div className="flex flex-col items-start gap-[16px] pb-1 md:pb-5 pl-0 md:pl-3">
-                      <h5 className="text-white">Occupation</h5>
-                      <div className="px-3 md:px-0 flex items-center md:space-x-1 w-full rounded-[4px] border p-2">
-                        <input
-                          type="text"
-                          name="occupation"
-                          value={formData.occupation}
-                          onChange={handleChange}
-                          className="w-full placeholder-[#00A85A] text-[#00A85A] bg-transparent text-lg font-light focus:outline-0 px-3"
-                          placeholder="Enter Occupation"
-                        />
-                      </div>
-                    </div>
-                    <div className="flex flex-col items-start gap-[16px] pb-1 md:pb-5 pl-0 md:pl-3">
-                      <h5 className="text-white">Primary contact</h5>
-                      <div className="px-3 md:px-0 flex items-center md:space-x-1 w-full rounded-[4px] border p-2">
-                        <input
-                          type="number"
-                          name="contact_person"
-                          value={formData.contact_person}
-                          onChange={handleChange}
-                          className="w-full placeholder-[#00A85A] text-[#00A85A] bg-transparent text-lg font-light focus:outline-0 px-3"
-                          placeholder="Enter Primary contact"
-                        />
-                      </div>
-                    </div>
-
-                    <div className="flex flex-col items-start gap-[16px] pb-1 md:pb-5 pl-0 md:pl-3">
-                      <h5 className="text-white">Nature of Interest</h5>
-                      <div className="px-3 md:px-0 flex items-center md:space-x-1 w-full rounded-[4px] border p-2">
-                        <input
-                          type="text"
+                    <div className="flex flex-col items-start gap-[16px] pb-1 md:pb-5 pl-0 md:pl-3 col-start-1 col-end-3">
+                      <h5 className="text-white">
+                        Nature of Collaboration Interest
+                      </h5>
+                      <div className="px-3 md:px-0 flex items-center md:space-x-1 w-full ">
+                        <textarea
+                          className="w-full bg-transparent border-[0.1px] p-4 border-BlueChalk rounded-lg focus:outline-0 placeholder-[#00A85A] text-[#00A85A]"
                           name="nature_of_interest"
                           value={formData.nature_of_interest}
                           onChange={handleChange}
-                          className="w-full placeholder-[#00A85A] text-[#00A85A] bg-transparent text-lg font-light focus:outline-0 px-3"
-                          placeholder="Enter nature of interest"
-                        />
-                      </div>
-                    </div>
-
-                    <div className="flex flex-col items-start gap-[16px] pb-1 md:pb-5 pl-0 md:pl-3">
-                      <h5 className="text-white">Corporate Goal</h5>
-                      <div className="px-3 md:px-0 flex items-center md:space-x-1 w-full rounded-[4px] border p-2">
-                        <input
-                          type="text"
-                          name="corporate_goals"
-                          value={formData.corporate_goals}
-                          onChange={handleChange}
-                          className="w-full placeholder-[#00A85A] text-[#00A85A] bg-transparent text-lg font-light focus:outline-0 px-3"
-                          placeholder="Enter corporate goals"
-                        />
+                          cols="30"
+                          rows="8"
+                        ></textarea>
                       </div>
                     </div>
                     <div className="flex flex-col items-start gap-[16px] pb-1 md:pb-5 pl-0 md:pl-3">
-                      <h5 className="text-white">Investment Amount Range</h5>
+                      <h5 className="text-white">Investment Range</h5>
                       <div className="px-3 md:px-0 flex items-center md:space-x-1 w-full rounded-[4px] border p-2">
                         <input
                           type="text"
@@ -980,21 +995,24 @@ const PartnerWithUsForm = () => {
                           value={formData.investment_range}
                           onChange={handleChange}
                           className="w-full placeholder-[#00A85A] text-[#00A85A] bg-transparent text-lg font-light focus:outline-0 px-3"
-                          placeholder="Enter investment amount range"
+                          placeholder="Enter investment range "
                         />
                       </div>
                     </div>
-                    <div className="flex flex-col items-start gap-[16px] pb-1 md:pb-5 pl-0 md:pl-3">
-                      <h5 className="text-white">Investment Timeframe</h5>
-                      <div className="px-3 md:px-0 flex items-center md:space-x-1 w-full rounded-[4px] border p-2">
-                        <input
-                          type="text"
-                          name="investment_timeframe"
-                          value={formData.investment_timeframe}
+
+                    <div className="flex flex-col items-start gap-[16px] pb-1 md:pb-5 pl-0 md:pl-3 col-start-1 col-end-3">
+                      <h5 className="text-white">
+                        Corporate Social Responsibility Goals
+                      </h5>
+                      <div className="px-3 md:px-0 flex items-center md:space-x-1 w-full ">
+                        <textarea
+                          className="w-full bg-transparent border-[0.1px] p-4 border-BlueChalk rounded-lg focus:outline-0 placeholder-[#00A85A] text-[#00A85A]"
+                          name="corporate_goals"
+                          value={formData.corporate_goals}
                           onChange={handleChange}
-                          className="w-full placeholder-[#00A85A] text-[#00A85A] bg-transparent text-lg font-light focus:outline-0 px-3"
-                          placeholder="Enter investment timeframe "
-                        />
+                          cols="30"
+                          rows="8"
+                        ></textarea>
                       </div>
                     </div>
                   </div>
@@ -1014,7 +1032,7 @@ const PartnerWithUsForm = () => {
                           value="Phone"
                           onChange={handleChange}
                           checked={formData.mode_of_communication === "Phone"}
-                          className="accent-[#00A85A]"
+                          className="accent-[#00A85A] cursor-pointer"
                         />
                         <p className="form-radio font-light text-base md:text-lg text-white">
                           Phone
@@ -1027,7 +1045,7 @@ const PartnerWithUsForm = () => {
                           value="Email"
                           onChange={handleChange}
                           checked={formData.mode_of_communication === "Email"}
-                          className="accent-[#00A85A]"
+                          className="accent-[#00A85A] cursor-pointer"
                         />
                         <p className="form-radio font-light text-base md:text-lg text-white">
                           Email
@@ -1042,7 +1060,7 @@ const PartnerWithUsForm = () => {
                           checked={
                             formData.mode_of_communication === "WhatsApp"
                           }
-                          className="accent-[#00A85A]"
+                          className="accent-[#00A85A] cursor-pointer"
                         />
                         <p className="font-light text-base md:text-lg text-white">
                           WhatsApp
@@ -1055,7 +1073,7 @@ const PartnerWithUsForm = () => {
                           value="Other"
                           onChange={handleChange}
                           checked={formData.mode_of_communication === "Other"}
-                          className="accent-[#00A85A]"
+                          className="accent-[#00A85A] cursor-pointer"
                         />
                         <p className="font-light text-base md:text-lg text-white">
                           Other (Please specify)
@@ -1071,14 +1089,12 @@ const PartnerWithUsForm = () => {
                       rows="8"
                     ></textarea>
                   </div>
-                  <div className="flex justify-start">
-                    <button
-                      className="text-white border border-GreenHaza bg-GreenHaza rounded-xl p-4 hover:border-GreenHaza hover:bg-GreenHaza  hover:text-white w-[160px]"
-                      type="submit"
-                    >
-                      Submit
-                    </button>
-                  </div>
+                  <button
+                    type="submit"
+                    className="text-white border border-GreenHaza bg-GreenHaza rounded-xl p-4 hover:border-GreenHaza hover:bg-GreenHaza  hover:text-white w-[160px]"
+                  >
+                    {loading ? "Submiting..." : "Submit"}
+                  </button>
                 </div>
               </div>
             </form>

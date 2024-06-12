@@ -10,7 +10,8 @@ const paasData = {
     title: "Planting as a Service (PAAS)",
     description:
       "Through Planting as a Service (PAAS), Turbham Farms not only offers tailored planting solutions but also supports farmers with access to machinery at prices below traditional market rates. We believe in making modern farming practices accessible and affordable for all.",
-    image: HeroImg,
+    media: HeroImg,
+    mediaType: "image",
     altText: "Agricultural field",
   },
   planningStage: {
