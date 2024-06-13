@@ -60,7 +60,7 @@ const SignupForTurbhamFarms = () => {
           <Image src={contact_us_mobile} alt="sign up picture" />
         </div>
       ) : (
-        <div className="relative w-full bg-red-300">
+        <div className="relative w-full">
           <div className="w-full absolute left-0 top-0 space-y-2 md:space-y-8">
             <div className="md:w-[40%] relative z-50">
               <Button
