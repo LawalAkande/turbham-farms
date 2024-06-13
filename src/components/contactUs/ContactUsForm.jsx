@@ -50,6 +50,7 @@ const ContactUsForm = () => {
       }
     } catch (error) {
       toast.error("Please fill all required fields!");
+      setLoading(false);
     }
   };
 
@@ -69,7 +70,7 @@ const ContactUsForm = () => {
               name="full_name"
               value={formData.full_name}
               onChange={handleChange}
-              className="w-full bg-WhiteSmoke rounded-md md:rounded-xl py-2 md:py-8 px-4 md:px-12 text-sm md:text-2xl placeholder:font-light border border-WhiteSmoke focus:outline-none focus:border-GreenHaza focus:ring-0"
+              className="w-full bg-WhiteSmoke rounded-md md:rounded-xl py-2 md:py-8 px-4 md:px-12 text-sm md:text-2xl placeholder:font-light border border-WhiteSmoke focus:outline-none focus:border-GreenHaza focus:ring-0 relative z-50"
               placeholder="Enter your Name"
               required
             />
@@ -86,7 +87,7 @@ const ContactUsForm = () => {
               name="email"
               value={formData.email}
               onChange={handleChange}
-              className="w-full bg-WhiteSmoke rounded-md md:rounded-xl py-2 md:py-8 px-4 md:px-12 text-sm md:text-2xl placeholder:font-light border border-WhiteSmoke focus:outline-none focus:border-GreenHaza focus:ring-0"
+              className="w-full bg-WhiteSmoke rounded-md md:rounded-xl py-2 md:py-8 px-4 md:px-12 text-sm md:text-2xl placeholder:font-light border border-WhiteSmoke focus:outline-none focus:border-GreenHaza focus:ring-0 relative z-50"
               placeholder="Enter your Email"
               required
             />
@@ -103,7 +104,7 @@ const ContactUsForm = () => {
               name="phone"
               value={formData.phone}
               onChange={handleChange}
-              className="appearance-none w-full bg-WhiteSmoke rounded-md md:rounded-xl py-2 md:py-8 px-4 md:px-12 text-sm md:text-2xl placeholder:font-light border border-WhiteSmoke focus:outline-none focus:border-GreenHaza focus:ring-0"
+              className="appearance-none w-full bg-WhiteSmoke rounded-md md:rounded-xl py-2 md:py-8 px-4 md:px-12 text-sm md:text-2xl placeholder:font-light border border-WhiteSmoke focus:outline-none focus:border-GreenHaza focus:ring-0 relative z-50"
               placeholder="Enter your Number"
               required
             />
@@ -120,7 +121,7 @@ const ContactUsForm = () => {
                 name="message"
                 value={formData.message}
                 onChange={handleChange}
-                className="w-full bg-WhiteSmoke rounded-md md:rounded-xl py-2 md:py-8 px-4 md:px-12 text-sm md:text-2xl placeholder:font-light border border-WhiteSmoke focus:outline-none focus:border-GreenHaza focus:ring-0"
+                className="w-full bg-WhiteSmoke rounded-md md:rounded-xl py-2 md:py-8 px-4 md:px-12 text-sm md:text-2xl placeholder:font-light border border-WhiteSmoke focus:outline-none focus:border-GreenHaza focus:ring-0 relative z-50"
                 placeholder="Enter your Message"
                 rows="5"
                 required
@@ -131,7 +132,7 @@ const ContactUsForm = () => {
             </p>
           </div>
 
-          <div className="col-span-2">
+          <div className="col-span-2 relative z-50">
             <button
               type="submit"
               className="text-base md:text-2xl w-full rounded-xl text-white border-2 border-GreenHaza p-3 md:p-6 bg-GreenHaza font-medium"

@@ -103,6 +103,7 @@ const PartnerWithUsForm = () => {
       }
     } catch (error) {
       toast.error("Please fill all required fields!");
+      setLoading(false);
     }
   };
 
@@ -191,11 +192,11 @@ const PartnerWithUsForm = () => {
 
             {mySelected === "FARMER COLLABORATION" && (
               <form onSubmit={handleSubmit}>
-                <div className="pl-[16px]">
+                <div className="pl-[16px] relative z-50">
                   <h4 className="font-light text-xl md:text-2xl mb-5 md:mb-28 text-white z-[999]">
                     Contact Information
                   </h4>
-                  <div className=" flex flex-col gap-[48px] z-[999] w-[95%]">
+                  <div className="flex flex-col gap-[48px] z-[999] w-[95%]">
                     <div className="grid grid-cols-1 gap-16 mb-16 ">
                       <div className="flex flex-col items-start gap-[16px] pb-1 md:pb-5 pl-0 md:pl-3">
                         <h5 className="text-white">Full Name</h5>
@@ -384,7 +385,7 @@ const PartnerWithUsForm = () => {
 
             {mySelected === "CORPORATE PARTNERS" && (
               <form onSubmit={handleSubmit}>
-                <div className="pl-[16px]">
+                <div className="pl-[16px] relative z-50">
                   <h4 className="font-light text-xl md:text-2xl mb-5 md:mb-28 text-white z-[999]">
                     Contact Information
                   </h4>

@@ -73,10 +73,10 @@ const Footer = () => {
             <div className="space-y-2 md:space-y-4">
               <h4 className="font-semibold">Get Involved</h4>
               <div className="flex flex-col space-y-2 md:space-y-4">
-                <Link href="" className="text-sm">
+                <Link href="/become-a-partner" className="text-sm">
                   Become a Farmer
                 </Link>
-                <Link href="" className="text-sm">
+                <Link href="/become-a-partner" className="text-sm">
                   Partner with us
                 </Link>
                 <Link href="" className="text-sm">
